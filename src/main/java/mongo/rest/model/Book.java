@@ -3,13 +3,20 @@ package mongo.rest.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 @Document(collection = "books")
 public class Book {
+    @NotBlank(message = "Id must be not empty")
     @Id
     private String id;
+    @NotBlank(message = "Name must be not empty")
     private String name;
+    @NotNull(message = "Number of pages be non null")
     private int numberPages;
     private double price;
+    @NotNull(message = "Author must be not empty")
     private Author author;
 
     public Book() {

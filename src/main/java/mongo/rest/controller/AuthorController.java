@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -19,7 +20,7 @@ public class AuthorController {
     }
 
     @PostMapping("/save")
-    public ResponseEntity<Author> save(@RequestBody Author author) {
+    public ResponseEntity<Author> save(@Valid @RequestBody Author author) {
         return new ResponseEntity<>(service.save(author), HttpStatus.CREATED);
     }
 
@@ -39,7 +40,7 @@ public class AuthorController {
     }
 
     @PutMapping("/update")
-    public ResponseEntity<Void> update(@RequestBody Author author) {
+    public ResponseEntity<Void> update(@Valid @RequestBody Author author) {
         service.update(author);
         return ResponseEntity.ok().build();
     }
