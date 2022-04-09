@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
+@RequestMapping("/author")
 @RestController
 public class AuthorController {
     private final AuthorService service;
